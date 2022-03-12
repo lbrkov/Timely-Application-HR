@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TimelyTableService } from './shared/timely-table.service';
 
 @Component({
   selector: 'app-root',

@@ -10,33 +10,22 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<TimelyDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("LocalDatabase")));
-builder.Services.AddCors(options =>
-
+builder.Services.AddCors(o => o.AddPolicy("CorsPolicy", builder =>
 {
-
-    options.AddPolicy(
-
-    name: "AllowOrigin",
-
-    builder => {
-
-        builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
-
-    });
-
-});
+  builder.AllowAnyOrigin()
+  .AllowAnyHeader()
+  .AllowAnyMethod();
+}));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseCors("AllowOrigin");
-    app.UseSwagger();
-    app.UseSwaggerUI();
+  app.UseSwagger();
+  app.UseSwaggerUI();
 }
-
+app.UseCors("CorsPolicy");
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
 
 app.MapControllers();

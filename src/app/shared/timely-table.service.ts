@@ -3,6 +3,7 @@ import { TimelyTable } from './timely-table.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { catchError } from 'rxjs/internal/operators/catchError';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -13,14 +14,18 @@ export class TimelyTableService {
     headers : ({'Content-Type': 'application/json'})
     }
 
-  readonly APIUrl = 'https://localhost:7280/api/Times'
+  readonly APIUrl = environment.apiHost
   constructor(private http:HttpClient) { }
 
   formData:TimelyTable = new TimelyTable();
 
-  postProjectName()
-  {
-    return this.http.post(this.APIUrl,this.formData.projectName,this.httpOptions);
+  // addprojectnameservice(data: any): Observable<any> {
+  //   console.log(data)
+  //   return this.http.post(`${this.APIUrl}/Times`, {ProjectName:data} );
+  // }
+
+  postForm(){
+   return this.http.post(`${this.APIUrl}`,this.formData);
   }
 
 
