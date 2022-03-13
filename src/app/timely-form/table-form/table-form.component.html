@@ -5,18 +5,18 @@
         <input class="form-contorl form-control-lg" placeholder="Project Name"
         ngModel name="projectName" #projectName="ngModel" [(ngModel)]="service.formData.projectName">
         <div>
-            <label style="margin: 22px;">Start Time</label>
-            <input class="form-contorl form-control-lg" placeholder="Start Time"
+            <!-- <label style="margin: 22px;">Start Time</label> -->
+            <input type="hidden" class="form-contorl form-control-lg" placeholder="Start Time"
             ngModel name="startTime" #startTime="ngModel" [(ngModel)]="service.formData.startTime">
         </div>
 <div>
-    <label style="margin: 22px;">Stop Time</label>
-    <input class="form-contorl form-control-lg" placeholder="Stop time"
+    <!-- <label type="hidden" style="margin: 22px;">Stop Time</label> -->
+    <input type="hidden" class="form-contorl form-control-lg" placeholder="Stop time"
     ngModel name="stopTime" #stopTime="ngModel" [(ngModel)]="service.formData.stopTime">
 </div>
 <div>
-    <label style="margin: 28px;">Duration</label>
-    <input class="form-contorl form-control-lg" placeholder="duration"
+    <!-- <label style="margin: 28px;">Duration</label> -->
+    <input type="hidden" class="form-contorl form-control-lg" placeholder="duration"
     ngModel name="duration" #stopTime="ngModel" [(ngModel)]="service.formData.duration">
 </div>
     </div>

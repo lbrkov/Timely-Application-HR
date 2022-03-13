@@ -4,11 +4,15 @@ using TimelyApplication.Models;
 
 namespace TimelyApplication.DatabaseContext
 {
-    public class TimelyDbContext : DbContext
+  public class TimelyDbContext : DbContext
+  {
+    public TimelyDbContext(DbContextOptions<TimelyDbContext> options) : base(options)
     {
-        public TimelyDbContext(DbContextOptions<TimelyDbContext> options) : base(options)
-        {
-        }
-        public DbSet<Time> Times { get; set; } = null!;
     }
+    public DbSet<Time> Times { get; set; } = null!;
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+
+    }
+  }
 }

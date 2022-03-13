@@ -19,11 +19,6 @@ export class TimelyTableService {
 
   formData:TimelyTable = new TimelyTable();
 
-  // addprojectnameservice(data: any): Observable<any> {
-  //   console.log(data)
-  //   return this.http.post(`${this.APIUrl}/Times`, {ProjectName:data} );
-  // }
-
   postForm(){
    return this.http.post(`${this.APIUrl}`,this.formData);
   }

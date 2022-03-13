@@ -20,11 +20,16 @@ export class TableFormComponent implements OnInit {
 
 
   onButtonClick(form:NgForm){
-    this.service.postForm().subscribe(
-      (result) => {
-        console.log(result);
-      }
-    );
-  }
+      this.service.postForm().subscribe(
+        (result) => {
+          console.log(result);
+        }
+        
+      );
+    }
+  // resetform(form:NgForm){
+  //     form.form.reset();
+  //     this.service.formData = new TimelyTable();
+  // }
 
 }

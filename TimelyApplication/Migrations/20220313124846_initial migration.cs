@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TimelyApplication.Migrations
 {
-    public partial class initialMigration : Migration
+    public partial class initialmigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,7 +13,7 @@ namespace TimelyApplication.Migrations
                 name: "Times",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    TimeId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     StartTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     StopTime = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -22,7 +22,7 @@ namespace TimelyApplication.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Times", x => x.Id);
+                    table.PrimaryKey("PK_Times", x => x.TimeId);
                 });
         }
 

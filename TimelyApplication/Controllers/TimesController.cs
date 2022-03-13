@@ -40,53 +40,57 @@ namespace TimelyApplication.Controllers
 
     // PUT: api/Times/5
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-    [HttpPut("{id}")]
-    public async Task<IActionResult> PutTime(int id, Time time)
-    {
-      if (id != time.Id)
-      {
-        return BadRequest();
-      }
+    // [HttpPut("{id}")]
+    // public async Task<IActionResult> PutTime(int id, Time time)
+    // {
+    //   if (id != time.Id)
+    //   {
+    //     return BadRequest();
+    //   }
 
-      _context.Entry(time).State = EntityState.Modified;
+    //   _context.Entry(time).State = EntityState.Modified;
 
-      try
-      {
-        await _context.SaveChangesAsync();
-      }
-      catch (DbUpdateConcurrencyException)
-      {
-        if (!TimeExists(id))
-        {
-          return NotFound();
-        }
-        else
-        {
-          throw;
-        }
-      }
+    //   try
+    //   {
+    //     await _context.SaveChangesAsync();
+    //   }
+    //   catch (DbUpdateConcurrencyException)
+    //   {
+    //     if (!TimeExists(id))
+    //     {
+    //       return NotFound();
+    //     }
+    //     else
+    //     {
+    //       throw;
+    //     }
+    //   }
 
-      return NoContent();
-    }
+    //   return NoContent();
+    // }
 
     // POST: api/Times
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
     [HttpPost]
     public async Task<ActionResult<Time>> PostTime(Time time)
     {
+      // _context.Database.OpenConnection();
+      // _context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.Times OFF;", 1);
       _context.Times.Add(time);
-      _context.Database.OpenConnection();
-      try
-      {
-        _context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.Times ON;");
-        await _context.SaveChangesAsync();
-        _context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.Times OFF;");
-      }
-      finally
-      {
-        _context.Database.CloseConnection();
-      }
-      return CreatedAtAction("GetTime", new { id = time.Id }, time);
+      await _context.SaveChangesAsync();
+      // _context.Database.CloseConnection();
+      // _context.Database.OpenConnection();
+      // try
+      // {
+      //   _context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.Times ON;");
+      //   await _context.SaveChangesAsync();
+      //   _context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.Times OFF;");
+      // }
+      // finally
+      // {
+      //   _context.Database.CloseConnection();
+      // }
+      return CreatedAtAction("GetTime", new { id = time.TimeId }, time);
     }
 
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
@@ -109,7 +113,7 @@ namespace TimelyApplication.Controllers
 
     private bool TimeExists(int id)
     {
-      return _context.Times.Any(e => e.Id == id);
+      return _context.Times.Any(e => e.TimeId == id);
     }
   }
 }

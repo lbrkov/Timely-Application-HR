@@ -24,11 +24,11 @@ namespace TimelyApplication.Migrations
 
             modelBuilder.Entity("TimelyApplication.Models.Time", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("TimeId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TimeId"), 1L, 1);
 
                     b.Property<int>("Duration")
                         .HasColumnType("int");
@@ -43,7 +43,7 @@ namespace TimelyApplication.Migrations
                     b.Property<DateTime>("StopTime")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("Id");
+                    b.HasKey("TimeId");
 
                     b.ToTable("Times");
                 });
