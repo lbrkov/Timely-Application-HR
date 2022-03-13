@@ -20,16 +20,39 @@ export class TableFormComponent implements OnInit {
 
 
   onButtonClick(form:NgForm){
+    if(this.service.formData.timeId==0)
+    {
+      this.insertTimeTable(form);
+    }
+    else{
+      this.updateTimeTable(form);
+    }
+    }
+
+    insertTimeTable(form:NgForm)
+    {
       this.service.postForm().subscribe(
         (result) => {
+          this.resetform(form);
+          this.service.refreshForm();
           console.log(result);
         }
         
       );
     }
-  // resetform(form:NgForm){
-  //     form.form.reset();
-  //     this.service.formData = new TimelyTable();
-  // }
+    updateTimeTable(form:NgForm)
+    {
+      this.service.putForm().subscribe(
+        (result) => {
+          this.resetform(form);
+          this.service.refreshForm()
+          console.log(result);
+        }
+      );
+    }
+  resetform(form:NgForm){
+      form.form.reset();
+      this.service.formData = new TimelyTable();
+  }
 
 }

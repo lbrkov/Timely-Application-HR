@@ -10,9 +10,24 @@ import { TimelyTableService } from '../shared/timely-table.service';
 })
 export class TimelyFormComponent implements OnInit {
 
-  constructor() { }
+  constructor(public service: TimelyTableService) { }
 
   ngOnInit(): void {
+    this.service.refreshForm();
+  }
+  changeForm(selected:TimelyTable){
+    this.service.formData = Object.assign({},selected);
+  }
+
+  onDelete(id:number)
+  {
+    this.service.deleteForm(id).subscribe(
+      (result) => {
+        this.service.refreshForm()
+        console.log(result);
+      }
+    )
+
   }
 
 }

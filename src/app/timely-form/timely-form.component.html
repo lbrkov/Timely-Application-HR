@@ -4,3 +4,28 @@
 <div>
     <app-table-form></app-table-form>
 </div>
+<body style="text-align: center;">
+<div>
+    <table class="table" style="margin:1em auto;" >
+        <thead>
+            <tr>
+                <th>projectName</th>
+                <th>startTime</th>
+                <th>stopTime</th>
+                <th>duration</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let tf of service.listofTime">
+                <td (click)="changeForm(tf)">{{tf.projectName}}</td>
+                <td (click)="changeForm(tf)">{{tf.startTime}}</td>
+                <td (click)="changeForm(tf)">{{tf.stopTime}}</td>
+                <td (click)="changeForm(tf)">{{tf.duration}}</td>
+                <td>
+                    <i class="far fa-trash-alt fa-lg text danger" (click)="(onDelete(tf.timeId))"></i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>

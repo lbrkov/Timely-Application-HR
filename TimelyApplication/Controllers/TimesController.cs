@@ -40,34 +40,34 @@ namespace TimelyApplication.Controllers
 
     // PUT: api/Times/5
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-    // [HttpPut("{id}")]
-    // public async Task<IActionResult> PutTime(int id, Time time)
-    // {
-    //   if (id != time.Id)
-    //   {
-    //     return BadRequest();
-    //   }
+    [HttpPut("{id}")]
+    public async Task<IActionResult> PutTime(int id, Time time)
+    {
+      if (id != time.TimeId)
+      {
+        return BadRequest();
+      }
 
-    //   _context.Entry(time).State = EntityState.Modified;
+      _context.Entry(time).State = EntityState.Modified;
 
-    //   try
-    //   {
-    //     await _context.SaveChangesAsync();
-    //   }
-    //   catch (DbUpdateConcurrencyException)
-    //   {
-    //     if (!TimeExists(id))
-    //     {
-    //       return NotFound();
-    //     }
-    //     else
-    //     {
-    //       throw;
-    //     }
-    //   }
+      try
+      {
+        await _context.SaveChangesAsync();
+      }
+      catch (DbUpdateConcurrencyException)
+      {
+        if (!TimeExists(id))
+        {
+          return NotFound();
+        }
+        else
+        {
+          throw;
+        }
+      }
 
-    //   return NoContent();
-    // }
+      return NoContent();
+    }
 
     // POST: api/Times
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754

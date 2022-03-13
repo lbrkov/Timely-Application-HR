@@ -1,5 +1,5 @@
 export class TimelyTable {
-    id:number = 1;
+    timeId:number=0;
     projectName:string = '';
     startTime:Date = new Date();
     stopTime:Date = new Date();
