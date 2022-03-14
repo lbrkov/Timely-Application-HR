@@ -28,15 +28,17 @@ export class TimelyTableService {
   refreshForm(){
     lastValueFrom(this.http.get(`${this.APIUrl}`)).then(res => this.listofTime = res as TimelyTable[]);
   }
-
   putForm(){
     return this.http.put(`${this.APIUrl}/${this.formData.timeId}`,this.formData);
+   }
+   patchStopTime()
+   {
+     return this.http.patch(`${this.APIUrl}/${this.formData.timeId}`,this.formData.stopTime);
    }
 
    deleteForm(id:number)
    {
      return this.http.delete(`${this.APIUrl}/${id}`)
    }
-
 
 }

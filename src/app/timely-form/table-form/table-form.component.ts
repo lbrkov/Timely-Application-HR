@@ -50,6 +50,15 @@ export class TableFormComponent implements OnInit {
         }
       );
     }
+    patchstoptime(form:NgForm){
+      this.service.patchStopTime().subscribe(
+        (result) => {
+          this.resetform(form);
+          this.service.refreshForm()
+          console.log(result);
+        }
+      )
+    }
   resetform(form:NgForm){
       form.form.reset();
       this.service.formData = new TimelyTable();

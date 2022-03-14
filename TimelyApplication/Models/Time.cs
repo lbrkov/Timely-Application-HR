@@ -9,8 +9,8 @@ namespace TimelyApplication.Models
 
     [Key]
     public int TimeId { get; set; }
-    public DateTime StartTime { get; set; } /*= DateTime.UtcNow; */
-    public DateTime StopTime { get; set; } /*= DateTime.UtcNow; */
+    public string StartTime { get; set; } /*= DateTime.UtcNow; */
+    public string StopTime { get; set; } /*= DateTime.UtcNow; */
     public string ProjectName { get; set; } = null!;
     public int Duration { get; set; }
 

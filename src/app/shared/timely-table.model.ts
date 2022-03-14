@@ -1,7 +1,7 @@
 export class TimelyTable {
     timeId:number=0;
     projectName:string = '';
-    startTime:Date = new Date();
-    stopTime:Date = new Date();
-    duration:number = 0;
+    startTime:string = new Date().toLocaleString();
+    stopTime:string = '/' ;
+    duration:number | undefined;
 }

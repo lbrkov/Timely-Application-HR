@@ -1,4 +1,5 @@
 ﻿#nullable disable
+using System;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TimelyApplication.DatabaseContext;
@@ -69,27 +70,25 @@ namespace TimelyApplication.Controllers
       return NoContent();
     }
 
+    [HttpPatch("{id}")]
+    public async Task<IActionResult> PatchStopTime(int id, DateTime stoptime)
+    {
+      stoptime = DateTime.Now;
+      var string_stoptime = stoptime.ToString();
+      var stoptimeid = await _context.Times.FindAsync(id);
+      stoptimeid.StopTime = string_stoptime;
+      await _context.SaveChangesAsync();
+      return NoContent();
+    }
+
     // POST: api/Times
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
     [HttpPost]
     public async Task<ActionResult<Time>> PostTime(Time time)
     {
-      // _context.Database.OpenConnection();
-      // _context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.Times OFF;", 1);
       _context.Times.Add(time);
       await _context.SaveChangesAsync();
-      // _context.Database.CloseConnection();
-      // _context.Database.OpenConnection();
-      // try
-      // {
-      //   _context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.Times ON;");
-      //   await _context.SaveChangesAsync();
-      //   _context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.Times OFF;");
-      // }
-      // finally
-      // {
-      //   _context.Database.CloseConnection();
-      // }
+
       return CreatedAtAction("GetTime", new { id = time.TimeId }, time);
     }
 
