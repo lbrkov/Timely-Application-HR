@@ -17,7 +17,7 @@ namespace TimelyApplication.Migrations
                     StartTime = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     StopTime = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ProjectName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Duration = table.Column<int>(type: "int", nullable: false)
+                    Duration = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {

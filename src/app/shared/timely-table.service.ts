@@ -35,6 +35,10 @@ export class TimelyTableService {
    {
      return this.http.patch(`${this.APIUrl}/${this.formData.timeId}`,this.formData.stopTime);
    }
+   patchDuration(duration:any)
+   {
+     return this.http.patch(`${this.APIUrl}/${this.formData.timeId}/${duration}`,this.formData.duration);
+   }
 
    deleteForm(id:number)
    {

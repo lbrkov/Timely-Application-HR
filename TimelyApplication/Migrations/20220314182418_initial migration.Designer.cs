@@ -11,7 +11,7 @@ using TimelyApplication.DatabaseContext;
 namespace TimelyApplication.Migrations
 {
     [DbContext(typeof(TimelyDbContext))]
-    [Migration("20220314085836_initial migration")]
+    [Migration("20220314182418_initial migration")]
     partial class initialmigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,8 +31,9 @@ namespace TimelyApplication.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TimeId"), 1L, 1);
 
-                    b.Property<int>("Duration")
-                        .HasColumnType("int");
+                    b.Property<string>("Duration")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProjectName")
                         .IsRequired()

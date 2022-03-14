@@ -23,6 +23,7 @@
                 <td (click)="changeForm(tf)">{{tf.duration}}</td>
                 <td>
                     <i class="far fa-trash-alt fa-lg text danger" (click)="(onDelete(tf.timeId))"></i>
+                    <button style="margin-left: 40px;" (click)="(calculateDuration(tf.startTime,tf.stopTime))">Calculate duration</button>
                 </td>
             </tr>
         </tbody>

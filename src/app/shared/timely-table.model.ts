@@ -1,7 +1,9 @@
+import { DatePipe } from "@angular/common";
+
 export class TimelyTable {
     timeId:number=0;
     projectName:string = '';
-    startTime:string = new Date().toLocaleString();
-    stopTime:string = '/' ;
-    duration:number | undefined;
+    startTime:string = new Date().toLocaleString('en-US', { hour12: false });
+    stopTime:string = 'In progress' ;
+    duration:string = '/';
 }

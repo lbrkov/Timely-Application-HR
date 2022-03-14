@@ -74,9 +74,17 @@ namespace TimelyApplication.Controllers
     public async Task<IActionResult> PatchStopTime(int id, DateTime stoptime)
     {
       stoptime = DateTime.Now;
-      var string_stoptime = stoptime.ToString();
+      var string_stoptime = stoptime.ToString("MM/dd/yyyy HH:mm:ss");
       var stoptimeid = await _context.Times.FindAsync(id);
       stoptimeid.StopTime = string_stoptime;
+      await _context.SaveChangesAsync();
+      return NoContent();
+    }
+    [HttpPatch("{id}/{duration}")]
+    public async Task<IActionResult> PatchDuration(int id, string duration)
+    {
+      var durationbyid = await _context.Times.FindAsync(id);
+      durationbyid.Duration = duration;
       await _context.SaveChangesAsync();
       return NoContent();
     }

@@ -12,7 +12,7 @@ namespace TimelyApplication.Models
     public string StartTime { get; set; } /*= DateTime.UtcNow; */
     public string StopTime { get; set; } /*= DateTime.UtcNow; */
     public string ProjectName { get; set; } = null!;
-    public int Duration { get; set; }
+    public string Duration { get; set; }
 
     //public TimeSpan CalcDuration() => Duration = StopTime - StartTime;
 

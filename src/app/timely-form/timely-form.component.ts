@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -12,6 +13,15 @@ export class TimelyFormComponent implements OnInit {
 
   constructor(public service: TimelyTableService) { }
 
+  myStartDate:any;
+  myEndDate:any;
+
+  diffHours:any;
+  diffMinutes:any;
+  diffSeconds:any;
+
+  finaleduration:any;
+
   ngOnInit(): void {
     this.service.refreshForm();
   }
@@ -22,6 +32,23 @@ export class TimelyFormComponent implements OnInit {
   onDelete(id:number)
   {
     this.service.deleteForm(id).subscribe(
+      (result) => {
+        this.service.refreshForm()
+        console.log(result);
+      }
+    )
+  }
+  calculateDuration(startTime:string,stopTime:string)
+  {
+    this.myStartDate = new Date(startTime).getTime();
+    this.myEndDate = new Date(stopTime).getTime();
+
+    this.diffHours = Math.floor((Math.abs(this.myEndDate - this.myStartDate) / (1000 * 60 * 60) % 24));
+    this.diffMinutes = Math.floor((Math.abs(this.myEndDate - this.myStartDate) / (1000 * 60) % 60));
+    this.diffSeconds = Math.floor((Math.abs(this.myEndDate - this.myStartDate) / (1000) % 60));
+
+    this.finaleduration = `${this.diffHours}:${this.diffMinutes}:${this.diffSeconds}`;
+    this.service.patchDuration(this.finaleduration).subscribe(
       (result) => {
         this.service.refreshForm()
         console.log(result);
