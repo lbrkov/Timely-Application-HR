@@ -1,0 +1,1 @@
+{"ast":null,"code":"export const environment = {\n  apiHost: \"https://localhost:7280/api/Times\",\n  production: true\n};","map":null,"metadata":{},"sourceType":"module"}
