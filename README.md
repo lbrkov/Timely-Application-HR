@@ -9,6 +9,8 @@ Application for time tracking
 - Build application using `dotnet build`
 - Run application in terminal with `dotnet run --project .\TimelyApplication\TimelyApplication.csproj`
 - Open another terminal, position yourself in the right folder again and run Angular with `ng serve -c=production`
+- Open `http://localhost:4200/api/Times` in you web browser
+- You should be able to see your application now
 
 ## How to use application
 
