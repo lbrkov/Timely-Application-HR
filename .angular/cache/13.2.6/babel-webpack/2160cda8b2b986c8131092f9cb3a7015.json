@@ -1,1 +1,0 @@
-{"ast":null,"code":"export class TimelyTable {\n  constructor(id, projectName, startTime, stopTime, duration) {\n    id = id;\n    projectName = projectName;\n    startTime = startTime;\n    stopTime = stopTime;\n    duration = duration;\n  }\n\n}","map":null,"metadata":{},"sourceType":"module"}

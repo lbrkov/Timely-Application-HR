@@ -1,1 +1,0 @@
-{"ast":null,"code":"export class TimelyTable {\n  constructor() {\n    this.timeId = 0;\n    this.projectName = '';\n    this.startTime = new Date().toLocaleString();\n    this.stopTime = 'In progress';\n  }\n\n}","map":null,"metadata":{},"sourceType":"module"}
