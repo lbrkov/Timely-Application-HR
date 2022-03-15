@@ -1,6 +1,4 @@
-import { DatePipe } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, NgModule, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { TimelyTable } from '../shared/timely-table.model';
 import { TimelyTableService } from '../shared/timely-table.service';
@@ -47,14 +45,14 @@ export class TimelyFormComponent implements OnInit {
     this.diffMinutes = Math.floor((Math.abs(this.myEndDate - this.myStartDate) / (1000 * 60) % 60));
     this.diffSeconds = Math.floor((Math.abs(this.myEndDate - this.myStartDate) / (1000) % 60));
 
-    this.finaleduration = `${this.diffHours}:${this.diffMinutes}:${this.diffSeconds}`;
+    this.finaleduration = `${this.diffHours} h : ${this.diffMinutes} min : ${this.diffSeconds} s`;
     this.service.patchDuration(this.finaleduration).subscribe(
       (result) => {
-        this.service.refreshForm()
+        this.service.refreshForm();
         console.log(result);
       }
     )
 
   }
-
 }
+

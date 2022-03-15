@@ -1,4 +1,3 @@
-import { DatePipe } from "@angular/common";
 
 export class TimelyTable {
     timeId:number=0;

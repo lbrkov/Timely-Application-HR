@@ -57,7 +57,7 @@ export class TableFormComponent implements OnInit {
         }
       )
     }
-  resetform(form:NgForm){
+    resetform(form:NgForm){
       form.form.reset();
       this.service.formData = new TimelyTable();
   }

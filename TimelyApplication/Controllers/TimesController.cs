@@ -1,5 +1,4 @@
 ﻿#nullable disable
-using System;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TimelyApplication.DatabaseContext;
@@ -40,7 +39,6 @@ namespace TimelyApplication.Controllers
     }
 
     // PUT: api/Times/5
-    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
     [HttpPut("{id}")]
     public async Task<IActionResult> PutTime(int id, Time time)
     {
@@ -90,7 +88,6 @@ namespace TimelyApplication.Controllers
     }
 
     // POST: api/Times
-    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
     [HttpPost]
     public async Task<ActionResult<Time>> PostTime(Time time)
     {
@@ -99,8 +96,6 @@ namespace TimelyApplication.Controllers
 
       return CreatedAtAction("GetTime", new { id = time.TimeId }, time);
     }
-
-    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
 
     // DELETE: api/Times/5
     [HttpDelete("{id}")]
